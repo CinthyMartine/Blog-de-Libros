@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mi perfil</title>
+</head>
+<body>
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
+        <div class="header__logo-container">
+            <img class="header__logo" src="Imagenes/Logo-Club-de-Libros.png" alt="Logo del club de libros">
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="#">Genero</a></li>
+                <li class="header__nav-item"><a href="#">Editorial</a></li>
+                <li class="header__nav-item"><a href="#">Autores</a></li>
+                <li class="header__nav-item"><a href="#">Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <h1 class="profile-section__title">Mi perfil</h1>
+
+            <div class="profile-info">
+                <p><strong>Nombre:</strong> <span id="profile-name">Nombre de usuario</span></p>
+                <p><strong>Correo:</strong> <span id="profile-email">correo@ejemplo.com</span></p>
+            </div>
+        </section>
+
+        <section class="recommend-section">
+            <h2 class="recommend-section__title">Recomienda un libro</h2>
+            <p class="recommend-section__description">
+                ¿Leíste algo que crees que debería estar en el blog? Cuéntanos y, si lo aprobamos, lo publicaremos mencionándote como quien lo recomendó.
+            </p>
+
+            <form class="recommend-form" id="recommend-form">
+                <label for="book-title">Título del libro:</label>
+                <input type="text" id="book-title" name="book-title" required>
+
+                <label for="book-author">Autor:</label>
+                <input type="text" id="book-author" name="book-author" required>
+
+                <label for="recommend-reason">¿Por qué lo recomiendas?</label>
+                <textarea id="recommend-reason" name="recommend-reason" rows="4" required></textarea>
+
+                <button type="submit" class="recommend-form__submit">Enviar recomendación</button>
+            </form>
+        </section>
+
+        <section class="my-recommendations-section">
+            <h2 class="my-recommendations-section__title">Mis recomendaciones enviadas</h2>
+            <ul class="recommendations-list" id="recommendations-list">
+                <!-- Se llenará más adelante con datos reales -->
+                <li class="recommendation-item">
+                    <span class="recommendation-item__book">Título de ejemplo</span>
+                    <span class="recommendation-item__status">Pendiente de revisión</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 El Rincón del Lector. Todos los derechos reservados.</p>
+            <ul class="footer__links">
+                <li><a href="#">Sobre el blog</a></li>
+                <li><a href="#">Política de privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

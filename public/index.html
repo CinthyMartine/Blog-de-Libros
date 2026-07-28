@@ -1,92 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Blog de libros</title>
+    <title>Club de libros</title>
 </head>
 <body>
     <header class="header">
-        <input type="checkbox" class="header_checkbox" id="open-menu">
-        <label for="open-menu" class="header_open-nav-button">=</label>
-        <div class="header_Logo-container">
-            <img class="header_logo" src="Imagenes/Logo-Club-de-Libros.png" alt="Logo del club de libros">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
+        <div class="header__logo-container">
+            <img class="header__logo" src="Imagenes/Logo-Club-de-Libros.png" alt="Logo del club de libros">
         </div>
-        
-        <nav class="header_nav">
-            <ul class="header_nav-list">
-                <li class="header_nav-item"><a href="#">Inicio</a> </li>
-                <li class="header_nav-item"><a href="#">Genero</a></li>
-                <li class="header_nav-item"><a href="#">Editorial</a></li>
-                <li class="header_nav-item"><a href="#">Autores</a></li>
-                <li class="header_nav-item"><a href="#">Nosotros</a></li>
+
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="#">Genero</a></li>
+                <li class="header__nav-item"><a href="#">Editorial</a></li>
+                <li class="header__nav-item"><a href="#">Autores</a></li>
+                <li class="header__nav-item"><a href="#">Nosotros</a></li>
+                <li class="header__nav-item header__nav-item--auth"><a href="login.html">Iniciar sesión</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <img class="banner-books" src="Imagenes/banner-libros.jpg" alt="banner de la pagina de libros">
+        <img class="banner" src="Imagenes/banner-libros.jpg" alt="banner de la pagina de libros">
+
         <div>
             <h1>Club de libros</h1>
         </div>
-        <!--Seccion de libros destacados-->
-        <section class="block-books">
-            <div class="section-item">
-                <img href="El-principito.html" src="Imagenes/El-principito.jpeg" alt="imagen del libro el principito">
-                <a class="section-item-button" href="El-principito.html">El principito</a>
+
+        <!-- Barra de búsqueda -->
+        <section class="search-section">
+            <form class="search-form" id="search-form">
+                <input type="text" class="search-form__input" id="search-input" name="search" placeholder="Buscar por título, autor o editorial...">
+                <button type="submit" class="search-form__button">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Sección de libros destacados -->
+        <section class="book-grid">
+            <div class="book-card">
+                <a href="book.html?id=1">
+                    <img src="Imagenes/El-principito.jpeg" alt="imagen del libro el principito">
+                </a>
+                <a class="book-card__button" href="book.html?id=1">El principito</a>
             </div>
-            <div class="section-item">
-                <img src="Imagenes/Cumbres-borrascosas.jpg" alt="imagen del libro cumbres borrascosas">
-                <a class="section-item-button" href="Cumbres-borrascosas.html">Cumbres Borrascosas</a>
+            <div class="book-card">
+                <a href="book.html?id=2">
+                    <img src="Imagenes/Cumbres-borrascosas.jpg" alt="imagen del libro cumbres borrascosas">
+                </a>
+                <a class="book-card__button" href="book.html?id=2">Cumbres Borrascosas</a>
             </div>
-            <div class="section-item">
-                <img src="Imagenes/El-pricionero-del-cielo.jpg" alt="imagen del libro pricionero del cielo">
-                <a class="section-item-button" href="El-prisionero-del-cielo.html">El pricionero del cielo</a>
+            <div class="book-card">
+                <a href="book.html?id=3">
+                    <img src="Imagenes/El-pricionero-del-cielo.jpg" alt="imagen del libro pricionero del cielo">
+                </a>
+                <a class="book-card__button" href="book.html?id=3">El prisionero del cielo</a>
             </div>
-            <div class="section-item">
-                <img src="Imagenes/El_psicoanalista.jpg" alt="imagen del libro el psicoanalista">
-                <a class="section-item-button" href="El-psicoanalista.html">El psicoanalista</a>
+            <div class="book-card">
+                <a href="book.html?id=4">
+                    <img src="Imagenes/El_psicoanalista.jpg" alt="imagen del libro el psicoanalista">
+                </a>
+                <a class="book-card__button" href="book.html?id=4">El psicoanalista</a>
             </div>
         </section>
 
-        <!--Seccion de Editoriales destacadas-->
-        <div class="editoriales-container">
+        <!-- Sección de Editoriales destacadas -->
+        <div class="publishers-container">
             <h2>Editoriales más vistas</h2>
-            <section class="block-editoriales">
-                <img src="Imagenes/Logo-EdisionesB.png" alt="Editorial Planeta">
-                <img src="Imagenes/Logo-EditorialAlfaguara.png" alt="Editorial Alfaguara">
-                <img src="Imagenes/Logo-EditorialDeBolsillo.png" alt="Editorial Penguin">
-                <img src="Imagenes/Logo-EditorialPlaneta.svg" alt="Editorial Salamandra">
-                <img src="Imagenes/Logo-EditorialEdisur.jpg" alt="Editorial Anagrama">
+            <section class="publishers-grid">
+                <a href="#"><img src="Imagenes/Logo-EdisionesB.png" alt="Editorial Ediciones B"></a>
+                <a href="#"><img src="Imagenes/Logo-EditorialAlfaguara.png" alt="Editorial Alfaguara"></a>
+                <a href="#"><img src="Imagenes/Logo-EditorialDeBolsillo.png" alt="Editorial De Bolsillo"></a>
+                <a href="#"><img src="Imagenes/Logo-EditorialPlaneta.svg" alt="Editorial Planeta"></a>
+                <a href="#"><img src="Imagenes/Logo-EditorialEdisur.jpg" alt="Editorial Edisur"></a>
             </section>
         </div>
-        <!--Seccion de Autores destacados-->
+
+        <!-- Sección de Autores destacados -->
         <div class="authors-container">
             <h2>Autores favoritos</h2>
-            <section class="block-books">
-                <div class="section-item">
-                    <img src="Imagenes/Autor-EmilyBronte.jpeg" alt="Emily Brontë">
-                    <a class="section-item-button" href="#">Emily Brontë</a>
+            <section class="book-grid">
+                <div class="book-card">
+                    <a href="#"><img src="Imagenes/Autor-EmilyBronte.jpeg" alt="Emily Brontë"></a>
+                    <a class="book-card__button" href="#">Emily Brontë</a>
                 </div>
-                <div class="section-item">
-                    <img src="Imagenes/Autor-AntoineDeSaintEuxpery.jpg" alt="Antoine de Saint-Exupéry">
-                    <a class="section-item-button" href="#">Saint-Exupéry</a>
+                <div class="book-card">
+                    <a href="#"><img src="Imagenes/Autor-AntoineDeSaintEuxpery.jpg" alt="Antoine de Saint-Exupéry"></a>
+                    <a class="book-card__button" href="#">Saint-Exupéry</a>
                 </div>
-                <div class="section-item">
-                    <img src="Imagenes/Autor-CarlosRuizZafon.jpeg" alt="Carlos Ruiz Zafón">
-                    <a class="section-item-button" href="#">Carlos Ruiz Zafón</a>
+                <div class="book-card">
+                    <a href="#"><img src="Imagenes/Autor-CarlosRuizZafon.jpeg" alt="Carlos Ruiz Zafón"></a>
+                    <a class="book-card__button" href="#">Carlos Ruiz Zafón</a>
                 </div>
-                <div class="section-item">
-                    <img src="Imagenes/Autor-JohnKatzenbach.jpg" alt="John Katzenbach">
-                    <a class="section-item-button" href="#">John Katzenbach</a>
+                <div class="book-card">
+                    <a href="#"><img src="Imagenes/Autor-JohnKatzenbach.jpg" alt="John Katzenbach"></a>
+                    <a class="book-card__button" href="#">John Katzenbach</a>
                 </div>
             </section>
         </div>
     </main>
+
     <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-text">© 2025 El Rincón del Lector. Todos los derechos reservados.</p>
-            <ul class="footer-links">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 El Rincón del Lector. Todos los derechos reservados.</p>
+            <ul class="footer__links">
                 <li><a href="#">Sobre el blog</a></li>
                 <li><a href="#">Política de privacidad</a></li>
                 <li><a href="#">Contacto</a></li>
