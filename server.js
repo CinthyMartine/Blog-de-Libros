@@ -17,6 +17,8 @@ app.get('/api/test-db', async (req, res) => {
         res.status(500).json({ conectado: false, error: error.message });
     }
 });
+const bookRoutes = require('./routes/book');
+app.use('/api/books', bookRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
