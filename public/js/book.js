@@ -29,3 +29,34 @@ async function loadBook() {
 }
 
 loadBook();
+
+// Cargar y mostrar los comentarios del libro
+async function loadComments() {
+    try {
+        const response = await fetch(`/api/comments/${bookId}`);
+        const comments = await response.json();
+
+        const commentsList = document.getElementById('comments-list');
+        const noComments = document.getElementById('no-comments');
+
+        if (comments.length === 0) {
+            noComments.style.display = 'block';
+            return;
+        }
+
+        comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment-item';
+            commentDiv.innerHTML = `
+                <p class="comment-item__author">${comment.usuario}</p>
+                <p class="comment-item__text">${comment.texto}</p>
+            `;
+            commentsList.appendChild(commentDiv);
+        });
+
+    } catch (error) {
+        console.error('Error al cargar los comentarios:', error);
+    }
+}
+
+loadComments();

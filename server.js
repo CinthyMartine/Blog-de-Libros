@@ -20,6 +20,9 @@ app.get('/api/test-db', async (req, res) => {
 const bookRoutes = require('./routes/book');
 app.use('/api/books', bookRoutes);
 
+const commentsRoutes = require('./routes/comments');
+app.use('/api/comments', commentsRoutes);
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
