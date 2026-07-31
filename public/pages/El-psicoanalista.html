@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../pages.css">
+    <title>El psicoanalista</title>
+</head>
+<body>
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
+        <div class="header__logo-container">
+            <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+        </div>
+
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="../index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="../genero.html">Genero</a></li>
+                <li class="header__nav-item"><a href="../editorial.html">Editorial</a></li>
+                <li class="header__nav-item"><a href="../authors.html">Autores</a></li>
+                <li class="header__nav-item"><a href="../nosotros.html">Nosotros</a></li>
+                <li class="header__nav-item header__nav-item--auth"><a href="../login.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>El psicoanalista</h1>
+        
+        <Section class="section_container">
+        <section class="section_container-left"></section>
+        <section class="section_container-center">
+        <img class="img_libro-ep" src="../Imagenes/Libro-El-psicoanalista.png" alt="imagen del libro el psicoanalista">
+        <p class="box_text">El psicoanalista es un libro que te atrapa desde la primera página. Tiene un ritmo súper intenso y está lleno de tensión que hace que quieras seguir leyendo sin parar. Lo que más me gustó es que mantiene la intriga constante: nunca sabes qué va a pasar, y eso hace que la lectura sea súper adictiva.</p>
+            
+        <p class="box_text">Lo bueno de este libro es cómo combina el suspenso con la psicología. No es solo acción; te hace pensar, dudar y replantearte lo que crees que sabes. La narrativa te mete de lleno en la mente de los personajes y te hace vivir la historia de una manera muy intensa.</p>
+
+        <p class="box_text-sub">
+            “El miedo es un arma que algunos saben manejar mejor que otros.”
+        </p>
+        <p class="box_text">Además, la forma en que está escrito es muy ágil. Los capítulos son dinámicos, las situaciones te mantienen alerta y el libro se siente como un juego mental que no puedes soltar. Es perfecto si te gustan los thrillers que juegan con la tensión sin volverse confusos.</p>
+
+        <p class="box_text-sub">
+            “Nunca subestimes lo que la mente de un hombre desesperado es capaz de hacer.” 
+        </p>
+
+        <p class="box_text">En resumen, El psicoanalista es un thriller psicológico que se lee rápido y te deja pensando. Es entretenido, intenso y te engancha de principio a fin, sin necesidad de escenas complicadas ni giros imposibles de seguir. Totalmente recomendable si buscas un libro que te mantenga en tensión hasta la última página.</p>
+        </section>
+        
+        <section class="section_container-right"></section>
+        </Section>
+        
+        <section class="comments-section" id="comments-section" data-book-id="4">
+            <div class="comments-list" id="comments-list">
+                <!-- Aquí book.js va a inyectar los comentarios reales desde la BD -->
+                <p id="no-comments" class="no-comments" style="display:none;">Todavía no hay comentarios. ¡Sé el primero!</p>
+            </div>
+
+            <h2 class="comments-section__title">Comentarios</h2>
+
+            <form class="comment-form" id="comment-form">
+                <label for="message">Mensaje:</label>
+                <textarea placeholder="Escribe tu comentario..." id="message" name="message" rows="4" cols="30" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p class="info-message">Inicia sesión para comentar. Los comentarios con lenguaje inapropiado no serán publicados.</p>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 Club de libros. Todos los derechos reservados.</p>
+            <ul class="footer__links">
+                <li><a href="#">Sobre el blog</a></li>
+                <li><a href="#">Política de privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script src="../js/comments.js"></script>
+</body>
+</html>
