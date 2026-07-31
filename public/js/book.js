@@ -60,3 +60,40 @@ async function loadComments() {
 }
 
 loadComments();
+
+// Enviar un nuevo comentario
+const commentForm = document.getElementById('comment-form');
+
+commentForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // evita que la página se recargue
+
+    const texto = document.getElementById('message').value;
+
+    try {
+        const response = await fetch('/api/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                texto: texto,
+                libro_id: bookId,
+                usuario_id: 1 // temporal, hasta que exista login real
+            })
+        });
+
+        if (!response.ok) {
+            alert('No se pudo guardar el comentario');
+            return;
+        }
+
+        // Limpiar el formulario
+        commentForm.reset();
+
+        // Volver a cargar los comentarios para mostrar el nuevo de inmediato
+        location.reload();
+
+    } catch (error) {
+        console.error('Error al enviar el comentario:', error);
+    }
+});
