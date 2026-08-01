@@ -94,5 +94,16 @@ router.get('/session', (req, res) => {
     }
 });
 
+// POST /api/auth/logout — cerrar sesión
+router.post('/logout', (req, res) => {
+    req.session.destroy((error) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'No se pudo cerrar sesión' });
+        }
+        res.json({ mensaje: 'Sesión cerrada correctamente' });
+    });
+});
+
 module.exports = router;
 
