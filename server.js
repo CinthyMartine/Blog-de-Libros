@@ -7,6 +7,15 @@ const PORT = 3000;
 app.use(express.static('public'));
 app.use(express.json());
 
+const session = require('express-session');
+
+app.use(session({
+    secret: 'una_clave_secreta_cualquiera',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 2 } // la sesión dura 2 horas
+}));
+
 // Ruta de prueba: confirma que Node y PostgreSQL se están comunicando
 app.get('/api/test-db', async (req, res) => {
     try {
@@ -22,6 +31,9 @@ app.use('/api/books', bookRoutes);
 
 const commentsRoutes = require('./routes/comments');
 app.use('/api/comments', commentsRoutes);
+
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
