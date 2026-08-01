@@ -85,5 +85,13 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// GET /api/auth/session — revisa si hay alguien con sesión iniciada
+router.get('/session', (req, res) => {
+    if (req.session.usuario) {
+        res.json({ autenticado: true, usuario: req.session.usuario });
+    } else {
+        res.json({ autenticado: false });
+    }
+});
 module.exports = router;
 
