@@ -93,5 +93,6 @@ router.get('/session', (req, res) => {
         res.json({ autenticado: false });
     }
 });
+
 module.exports = router;
 
