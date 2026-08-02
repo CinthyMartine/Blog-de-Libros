@@ -54,9 +54,9 @@ router.post('/login', async (req, res) => {
 
     try {
         const resultado = await pool.query(
-            'SELECT id, nombre, email, password_hash FROM usuarios WHERE email = $1',
-            [email]
-        );
+    'SELECT id, nombre, email, password_hash, es_admin FROM usuarios WHERE email = $1',
+    [email]
+);
 
         if (resultado.rows.length === 0) {
             return res.status(401).json({ error: 'Correo o contraseña incorrectos' });
@@ -74,10 +74,11 @@ router.post('/login', async (req, res) => {
         req.session.usuario = {
             id: usuario.id,
             nombre: usuario.nombre,
-            email: usuario.email
+            email: usuario.email,
+            es_admin: usuario.es_admin
         };
 
-        res.json({ id: usuario.id, nombre: usuario.nombre, email: usuario.email });
+        res.json({ id: usuario.id, nombre: usuario.nombre, email: usuario.email, es_admin: usuario.es_admin });
 
     } catch (error) {
         console.error(error);
@@ -103,6 +104,13 @@ router.post('/logout', (req, res) => {
         }
         res.json({ mensaje: 'Sesión cerrada correctamente' });
     });
+});
+
+const requireAdmin = require('../middleware/requireAdmin');
+
+// GET /api/auth/admin-check — ruta de prueba, solo accesible para administradores
+router.get('/admin-check', requireAdmin, (req, res) => {
+    res.json({ mensaje: 'Acceso concedido, eres administradora' });
 });
 
 module.exports = router;
