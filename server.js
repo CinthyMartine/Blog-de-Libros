@@ -38,6 +38,9 @@ app.use('/api/auth', authRoutes);
 const adminRoutes = require('./routes/admin');
 app.use('/api/admin', adminRoutes);
 
+const recommendationsRoutes = require('./routes/recommendations');
+app.use('/api/recommendations', recommendationsRoutes);
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

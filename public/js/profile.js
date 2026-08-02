@@ -31,3 +31,36 @@ if (logoutButton) {
         }
     });
 }
+
+const recommendForm = document.getElementById('recommend-form');
+
+if (recommendForm) {
+    recommendForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const titulo_libro = document.getElementById('book-title').value;
+        const autor_libro = document.getElementById('book-author').value;
+        const motivo = document.getElementById('recommend-reason').value;
+
+        try {
+            const response = await fetch('/api/recommendations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ titulo_libro, autor_libro, motivo })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.error || 'No se pudo enviar la recomendación');
+                return;
+            }
+
+            alert('¡Gracias! Tu recomendación fue enviada y será revisada.');
+            recommendForm.reset();
+
+        } catch (error) {
+            console.error('Error al enviar la recomendación:', error);
+        }
+    });
+}
