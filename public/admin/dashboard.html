@@ -19,15 +19,55 @@
     </header>
 
     <main>
-        <section class="admin-section">
-            <h1>Panel de administrador</h1>
+    <section class="admin-section">
+        <h1>Panel de administrador</h1>
 
-            <h2>Recomendaciones pendientes</h2>
-            <div id="recommendations-list" class="recommendations-admin-list">
-                <!-- Se llenan dinámicamente con admin.js -->
-            </div>
+        <h2>Recomendaciones pendientes</h2>
+        <div id="recommendations-list" class="recommendations-admin-list">
+            <!-- Se llenan dinámicamente con admin.js -->
+        </div>
+
+        <!-- Formulario de aprobación, oculto hasta que se elija una recomendación -->
+        <section id="approve-form-section" class="admin-section" style="display: none;">
+            <h2>Aprobar recomendación</h2>
+            <p>Recomendación seleccionada: <strong id="approve-book-title"></strong></p>
+
+            <form id="approve-form">
+                <div class="form-group">
+                    <label for="approve-titulo">Título del libro (definitivo):</label>
+                    <input type="text" id="approve-titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="approve-autor">Autor:</label>
+                    <select id="approve-autor" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="approve-editorial">Editorial:</label>
+                    <select id="approve-editorial" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="approve-generos">Géneros (puedes elegir varios):</label>
+                    <select id="approve-generos" multiple></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="approve-portada">Ruta de la imagen de portada:</label>
+                    <input type="text" id="approve-portada" placeholder="Imagenes/nombre-portada.png" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="approve-pagina">Ruta del archivo HTML del libro:</label>
+                    <input type="text" id="approve-pagina" placeholder="pages/nombre-libro.html" required>
+                </div>
+
+                <button type="submit" class="auth-form__submit">Confirmar y crear libro</button>
+            </form>
         </section>
-    </main>
+    </section>
+</main>
 
     <footer class="footer">
         <div class="footer__content">
