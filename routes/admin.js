@@ -52,8 +52,8 @@ router.post('/recommendations/:id/approve', requireAdmin, async (req, res) => {
 
         // 2. Crear el libro real, con recomendado_por
         const libroNuevo = await pool.query(
-            `INSERT INTO libros (titulo, sinopsis, portada_url, autor_id, editorial_id, pagina, recomendado_por)
-             VALUES ($1, '', $2, $3, $4, $5, $6)
+            `INSERT INTO libros (titulo, portada_url, autor_id, editorial_id, pagina, recomendado_por)
+             VALUES ($1, $2, $3, $4, $5, $6)
              RETURNING id`,
             [titulo, portada_url, autor_id, editorial_id, pagina, usuarioId]
         );
@@ -102,4 +102,80 @@ router.get('/options', requireAdmin, async (req, res) => {
         res.status(500).json({ error: 'Error al obtener las opciones' });
     }
 });
+
+// POST /api/admin/books — crear un libro nuevo directamente (sin recomendación)
+router.post('/books', requireAdmin, async (req, res) => {
+    const { titulo, autor_id, editorial_id, portada_url, pagina, generos, destacado } = req.body;
+
+    if (!titulo || !autor_id || !editorial_id || !pagina) {
+        return res.status(400).json({ error: 'Faltan datos del libro' });
+    }
+
+    try {
+        const libroNuevo = await pool.query(
+            `INSERT INTO libros (titulo, portada_url, autor_id, editorial_id, pagina, destacado)
+             VALUES ($1, $2, $3, $4, $5, $6)
+             RETURNING id`,
+            [titulo, portada_url, autor_id, editorial_id, pagina, destacado || false]
+        );
+
+        const libroId = libroNuevo.rows[0].id;
+
+        if (generos && generos.length > 0) {
+            for (const generoId of generos) {
+                await pool.query(
+                    'INSERT INTO libros_generos (libro_id, genero_id) VALUES ($1, $2)',
+                    [libroId, generoId]
+                );
+            }
+        }
+
+        res.status(201).json({ mensaje: 'Libro creado correctamente', libro_id: libroId });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear el libro' });
+    }
+});
+
+// POST /api/admin/authors — crear un autor nuevo
+router.post('/authors', requireAdmin, async (req, res) => {
+    const { nombre } = req.body;
+
+    if (!nombre) {
+        return res.status(400).json({ error: 'Falta el nombre del autor' });
+    }
+
+    try {
+        const resultado = await pool.query(
+            'INSERT INTO autores (nombre) VALUES ($1) RETURNING id, nombre',
+            [nombre]
+        );
+        res.status(201).json(resultado.rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear el autor' });
+    }
+});
+
+// POST /api/admin/publishers — crear una editorial nueva
+router.post('/publishers', requireAdmin, async (req, res) => {
+    const { nombre } = req.body;
+
+    if (!nombre) {
+        return res.status(400).json({ error: 'Falta el nombre de la editorial' });
+    }
+
+    try {
+        const resultado = await pool.query(
+            'INSERT INTO editoriales (nombre) VALUES ($1) RETURNING id, nombre',
+            [nombre]
+        );
+        res.status(201).json(resultado.rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear la editorial' });
+    }
+});
+
 module.exports = router;

@@ -68,7 +68,11 @@ if (loginForm) {
                 return;
             }
 
-            window.location.href = 'perfil.html';
+            if (data.es_admin) {
+                window.location.href = 'admin/dashboard.html';
+            } else {
+                window.location.href = 'perfil.html';
+            }
 
         } catch (error) {
             console.error('Error al iniciar sesión:', error);

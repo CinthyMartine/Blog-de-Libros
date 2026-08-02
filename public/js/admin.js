@@ -5,19 +5,34 @@ async function loadOptions() {
     const response = await fetch('/api/admin/options');
     opciones = await response.json();
 
-    const selectAutor = document.getElementById('approve-autor');
-    opciones.autores.forEach(a => {
-        selectAutor.innerHTML += `<option value="${a.id}">${a.nombre}</option>`;
+    const selects = [
+        document.getElementById('new-book-autor'),
+        document.getElementById('approve-autor')
+    ];
+    selects.forEach(select => {
+        opciones.autores.forEach(a => {
+            select.innerHTML += `<option value="${a.id}">${a.nombre}</option>`;
+        });
     });
 
-    const selectEditorial = document.getElementById('approve-editorial');
-    opciones.editoriales.forEach(e => {
-        selectEditorial.innerHTML += `<option value="${e.id}">${e.nombre}</option>`;
+    const selectsEditorial = [
+        document.getElementById('new-book-editorial'),
+        document.getElementById('approve-editorial')
+    ];
+    selectsEditorial.forEach(select => {
+        opciones.editoriales.forEach(e => {
+            select.innerHTML += `<option value="${e.id}">${e.nombre}</option>`;
+        });
     });
 
-    const selectGeneros = document.getElementById('approve-generos');
-    opciones.generos.forEach(g => {
-        selectGeneros.innerHTML += `<option value="${g.id}">${g.nombre}</option>`;
+    const selectsGeneros = [
+        document.getElementById('new-book-generos'),
+        document.getElementById('approve-generos')
+    ];
+    selectsGeneros.forEach(select => {
+        opciones.generos.forEach(g => {
+            select.innerHTML += `<option value="${g.id}">${g.nombre}</option>`;
+        });
     });
 }
 
@@ -53,7 +68,6 @@ async function loadRecommendations() {
             container.appendChild(card);
         });
 
-        // Conectar los botones "Aprobar" recién creados
         document.querySelectorAll('.approve-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 recomendacionSeleccionadaId = btn.dataset.id;
@@ -69,16 +83,60 @@ async function loadRecommendations() {
     }
 }
 
+// ---- Funciones auxiliares: resolver autor/editorial (seleccionado o nuevo) ----
+async function resolverAutor(selectId, nuevoId) {
+    const select = document.getElementById(selectId).value;
+    const nuevo = document.getElementById(nuevoId).value.trim();
+
+    if (nuevo) {
+        const response = await fetch('/api/admin/authors', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre: nuevo })
+        });
+        const data = await response.json();
+        return data.id;
+    }
+
+    return select;
+}
+
+async function resolverEditorial(selectId, nuevoId) {
+    const select = document.getElementById(selectId).value;
+    const nuevo = document.getElementById(nuevoId).value.trim();
+
+    if (nuevo) {
+        const response = await fetch('/api/admin/publishers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre: nuevo })
+        });
+        const data = await response.json();
+        return data.id;
+    }
+
+    return select;
+}
+
+// ---- Formulario: aprobar recomendación ----
 document.getElementById('approve-form').addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    const autorId = await resolverAutor('approve-autor', 'approve-autor-nuevo');
+    const editorialId = await resolverEditorial('approve-editorial', 'approve-editorial-nuevo');
+
+    if (!autorId || !editorialId) {
+        alert('Debes seleccionar o escribir un autor y una editorial');
+        return;
+    }
 
     const generosSeleccionados = Array.from(document.getElementById('approve-generos').selectedOptions)
         .map(opt => opt.value);
 
     const datos = {
         titulo: document.getElementById('approve-titulo').value,
-        autor_id: document.getElementById('approve-autor').value,
-        editorial_id: document.getElementById('approve-editorial').value,
+        autor_id: autorId,
+        editorial_id: editorialId,
         generos: generosSeleccionados,
         portada_url: document.getElementById('approve-portada').value,
         pagina: document.getElementById('approve-pagina').value
@@ -101,10 +159,57 @@ document.getElementById('approve-form').addEventListener('submit', async (event)
         alert('¡Libro creado correctamente!');
         document.getElementById('approve-form-section').style.display = 'none';
         document.getElementById('approve-form').reset();
-        loadRecommendations(); // recargar la lista sin la que ya se aprobó
+        loadRecommendations();
 
     } catch (error) {
         console.error('Error al aprobar:', error);
+    }
+});
+
+// ---- Formulario: crear libro nuevo directamente ----
+document.getElementById('new-book-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const autorId = await resolverAutor('new-book-autor', 'new-book-autor-nuevo');
+    const editorialId = await resolverEditorial('new-book-editorial', 'new-book-editorial-nuevo');
+
+    if (!autorId || !editorialId) {
+        alert('Debes seleccionar o escribir un autor y una editorial');
+        return;
+    }
+
+    const generosSeleccionados = Array.from(document.getElementById('new-book-generos').selectedOptions)
+        .map(opt => opt.value);
+
+    const datos = {
+        titulo: document.getElementById('new-book-titulo').value,
+        autor_id: autorId,
+        editorial_id: editorialId,
+        generos: generosSeleccionados,
+        portada_url: document.getElementById('new-book-portada').value,
+        pagina: document.getElementById('new-book-pagina').value,
+        destacado: document.getElementById('new-book-destacado').checked
+    };
+
+    try {
+        const response = await fetch('/api/admin/books', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.error || 'No se pudo crear el libro');
+            return;
+        }
+
+        alert('¡Libro creado correctamente!');
+        document.getElementById('new-book-form').reset();
+
+    } catch (error) {
+        console.error('Error al crear el libro:', error);
     }
 });
 

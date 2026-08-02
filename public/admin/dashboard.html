@@ -18,18 +18,70 @@
         </nav>
     </header>
 
-    <main>
+<main>
     <section class="admin-section">
         <h1>Panel de administrador</h1>
+        <p id="admin-welcome"></p>
+    </section>
 
+    <!-- ============ SUBIR LIBRO NUEVO (sin recomendación) ============ -->
+    <section class="admin-section">
+        <h2>Agregar libro nuevo</h2>
+        <form id="new-book-form">
+            <div class="form-group">
+                <label for="new-book-titulo">Título:</label>
+                <input type="text" id="new-book-titulo" required>
+            </div>
+
+           <div class="form-group">
+    <label for="new-book-autor">Autor:</label>
+    <select id="new-book-autor">
+        <option value="">-- Selecciona un autor --</option>
+    </select>
+    <input type="text" id="new-book-autor-nuevo" placeholder="O escribe un autor nuevo aquí">
+</div>
+
+<div class="form-group">
+    <label for="new-book-editorial">Editorial:</label>
+    <select id="new-book-editorial">
+        <option value="">-- Selecciona una editorial --</option>
+    </select>
+    <input type="text" id="new-book-editorial-nuevo" placeholder="O escribe una editorial nueva aquí">
+</div>
+
+            <div class="form-group">
+                <label for="new-book-generos">Géneros (puedes elegir varios):</label>
+                <select id="new-book-generos" multiple></select>
+            </div>
+
+            <div class="form-group">
+                <label for="new-book-portada">Ruta de la imagen de portada:</label>
+                <input type="text" id="new-book-portada" placeholder="Imagenes/nombre-portada.png" required>
+            </div>
+
+            <div class="form-group">
+                <label for="new-book-pagina">Ruta del archivo HTML del libro:</label>
+                <input type="text" id="new-book-pagina" placeholder="pages/nombre-libro.html" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="new-book-destacado">
+                    Mostrar en el inicio (destacado)
+                </label>
+            </div>
+
+            <button type="submit" class="auth-form__submit">Crear libro</button>
+        </form>
+    </section>
+
+    <!-- ============ RECOMENDACIONES PENDIENTES ============ -->
+    <section class="admin-section">
         <h2>Recomendaciones pendientes</h2>
-        <div id="recommendations-list" class="recommendations-admin-list">
-            <!-- Se llenan dinámicamente con admin.js -->
-        </div>
+        <div id="recommendations-list" class="recommendations-admin-list"></div>
 
-        <!-- Formulario de aprobación, oculto hasta que se elija una recomendación -->
-        <section id="approve-form-section" class="admin-section" style="display: none;">
-            <h2>Aprobar recomendación</h2>
+        <section id="approve-form-section" class="admin-subsection" style="display: none;">
+            <h3>Aprobar recomendación</h3>
             <p>Recomendación seleccionada: <strong id="approve-book-title"></strong></p>
 
             <form id="approve-form">
@@ -66,6 +118,14 @@
                 <button type="submit" class="auth-form__submit">Confirmar y crear libro</button>
             </form>
         </section>
+    </section>
+
+    <!-- ============ AUDITORÍA DE COMENTARIOS (la conectamos en el próximo paso) ============ -->
+    <section class="admin-section">
+        <h2>Comentarios recientes</h2>
+        <div id="comments-audit-list" class="recommendations-admin-list">
+            <p>Próximamente</p>
+        </div>
     </section>
 </main>
 
