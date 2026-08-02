@@ -668,3 +668,23 @@ h1, h2 {
 .modal-box__button:hover {
     background-color: #1c3f7c;
 }
+
+/* ADMIN DASHBOARD  */
+.admin-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.recommendation-admin-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.recommendation-admin-card h3 {
+    margin-top: 0;
+    color: #102b5a;
+}

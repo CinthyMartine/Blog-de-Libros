@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Panel de administrador</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo-container">
+            <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="../index.html">Volver al sitio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-section">
+            <h1>Panel de administrador</h1>
+
+            <h2>Recomendaciones pendientes</h2>
+            <div id="recommendations-list" class="recommendations-admin-list">
+                <!-- Se llenan dinámicamente con admin.js -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 Club de libros. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
