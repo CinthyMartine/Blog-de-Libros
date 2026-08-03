@@ -83,7 +83,6 @@ async function loadRecommendations() {
     }
 }
 
-// ---- Funciones auxiliares: resolver autor/editorial (seleccionado o nuevo) ----
 async function resolverAutor(selectId, nuevoId) {
     const select = document.getElementById(selectId).value;
     const nuevo = document.getElementById(nuevoId).value.trim();
@@ -118,7 +117,6 @@ async function resolverEditorial(selectId, nuevoId) {
     return select;
 }
 
-// ---- Formulario: aprobar recomendación ----
 document.getElementById('approve-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -166,7 +164,6 @@ document.getElementById('approve-form').addEventListener('submit', async (event)
     }
 });
 
-// ---- Formulario: crear libro nuevo directamente ----
 document.getElementById('new-book-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -213,5 +210,49 @@ document.getElementById('new-book-form').addEventListener('submit', async (event
     }
 });
 
+async function loadCommentsAudit() {
+    try {
+        const response = await fetch('/api/admin/comments');
+        const comments = await response.json();
+
+        const container = document.getElementById('comments-audit-list');
+        container.innerHTML = '';
+
+        if (comments.length === 0) {
+            container.innerHTML = '<p>No hay comentarios todavía.</p>';
+            return;
+        }
+
+        comments.forEach(comment => {
+            const card = document.createElement('div');
+            card.className = 'recommendation-admin-card';
+            card.innerHTML = `
+                <p><strong>${comment.usuario}</strong> en <em>${comment.libro}</em></p>
+                <p>${comment.texto}</p>
+                <button class="delete-comment-btn" data-id="${comment.id}">Eliminar</button>
+            `;
+            container.appendChild(card);
+        });
+
+        document.querySelectorAll('.delete-comment-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const confirmar = confirm('¿Eliminar este comentario?');
+                if (!confirmar) return;
+
+                try {
+                    await fetch(`/api/admin/comments/${btn.dataset.id}`, { method: 'DELETE' });
+                    loadCommentsAudit();
+                } catch (error) {
+                    console.error('Error al eliminar comentario:', error);
+                }
+            });
+        });
+
+    } catch (error) {
+        console.error('Error al cargar comentarios:', error);
+    }
+}
+
 loadOptions();
 loadRecommendations();
+loadCommentsAudit();

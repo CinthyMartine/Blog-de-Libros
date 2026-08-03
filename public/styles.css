@@ -694,3 +694,18 @@ h1, h2 {
     padding-top: 20px;
     border-top: 1px solid #ddd;
 }
+
+.delete-comment-btn {
+    margin-top: 10px;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dc2626;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.delete-comment-btn:hover {
+    background-color: #b91c1c;
+}

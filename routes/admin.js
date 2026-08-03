@@ -178,4 +178,42 @@ router.post('/publishers', requireAdmin, async (req, res) => {
     }
 });
 
+// GET /api/admin/comments — lista todos los comentarios, más recientes primero
+router.get('/comments', requireAdmin, async (req, res) => {
+    try {
+        const resultado = await pool.query(
+            `SELECT 
+                comentarios.id,
+                comentarios.texto,
+                comentarios.fecha,
+                usuarios.nombre AS usuario,
+                libros.titulo AS libro
+             FROM comentarios
+             JOIN usuarios ON comentarios.usuario_id = usuarios.id
+             JOIN libros ON comentarios.libro_id = libros.id
+             ORDER BY comentarios.fecha DESC`
+        );
+
+        res.json(resultado.rows);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener los comentarios' });
+    }
+});
+
+// DELETE /api/admin/comments/:id — elimina un comentario
+router.delete('/comments/:id', requireAdmin, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await pool.query('DELETE FROM comentarios WHERE id = $1', [id]);
+        res.json({ mensaje: 'Comentario eliminado' });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar el comentario' });
+    }
+});
+
 module.exports = router;
