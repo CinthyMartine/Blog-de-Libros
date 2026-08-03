@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
+const { contieneLenguajeInapropiado } = require('../utils/filtro-palabras');
 
 // GET /api/comments/:bookId — trae todos los comentarios de un libro
 router.get('/:bookId', async (req, res) => {
@@ -35,6 +36,11 @@ router.post('/', async (req, res) => {
     if (!texto || !libro_id || !usuario_id) {
         return res.status(400).json({ error: 'Faltan datos del comentario' });
     }
+
+    // Revisar lenguaje inapropiado
+    if (contieneLenguajeInapropiado(texto)) {
+    return res.status(400).json({ error: 'Tu comentario contiene lenguaje no permitido' });
+}
 
     try {
         const resultado = await pool.query(

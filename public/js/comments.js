@@ -58,9 +58,10 @@ commentForm.addEventListener('submit', async (event) => {
         });
 
         if (!response.ok) {
-            alert('No se pudo guardar el comentario');
-            return;
-        }
+    const data = await response.json();
+    alert(data.error || 'No se pudo guardar el comentario');
+    return;
+}
 
         commentForm.reset();
         location.reload();
