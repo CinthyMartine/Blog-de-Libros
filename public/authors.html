@@ -26,27 +26,17 @@
     </header>
 
     <main>
-        <h1>Explora por autor</h1>
+    <h1>Explora por autor</h1>
 
-        <section class="book-grid">
-            <div class="book-card">
-                <a href="#"><img src="Imagenes/Autor-EmilyBronte-portada.png" alt="Emily Brontë"></a>
-                <a class="book-card__button" href="#">Emily Brontë</a>
-            </div>
-            <div class="book-card">
-                <a href="#"><img src="Imagenes/Autor-AntoineDeSaintEuxpery-portada.png" alt="Antoine de Saint-Exupéry"></a>
-                <a class="book-card__button" href="#">Saint-Exupéry</a>
-            </div>
-            <div class="book-card">
-                <a href="#"><img src="Imagenes/Autor-CarlosRuizZafon-portada.png" alt="Carlos Ruiz Zafón"></a>
-                <a class="book-card__button" href="#">Carlos Ruiz Zafón</a>
-            </div>
-            <div class="book-card">
-                <a href="#"><img src="Imagenes/Autor-JohnKatzenbach-portada.png" alt="John Katzenbach"></a>
-                <a class="book-card__button" href="#">John Katzenbach</a>
-            </div>
-        </section>
-    </main>
+    <section class="book-grid" id="author-list">
+        <!-- Se llena dinámicamente con catalog.js -->
+    </section>
+
+    <section id="author-results" style="display: none;">
+        <h2 id="author-results-title"></h2>
+        <section class="book-grid" id="author-books-list"></section>
+    </section>
+</main>
 
     <footer class="footer">
         <div class="footer__content">
@@ -60,5 +50,6 @@
     </footer>
 
     <script src="js/navbar.js"></script>
+    <script src="js/catalog.js"></script>   
 </body>
 </html>

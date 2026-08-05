@@ -26,23 +26,17 @@
     </header>
 
     <main>
-        <h1>Explora por género</h1>
+    <h1>Explora por género</h1>
 
-        <section class="book-grid">
-            <div class="book-card">
-                <a class="book-card__button" href="#">Novela</a>
-            </div>
-            <div class="book-card">
-                <a class="book-card__button" href="#">Clásico</a>
-            </div>
-            <div class="book-card">
-                <a class="book-card__button" href="#">Misterio</a>
-            </div>
-            <div class="book-card">
-                <a class="book-card__button" href="#">Infantil</a>
-            </div>
-        </section>
-    </main>
+    <section class="book-grid" id="genre-list">
+        <!-- Se llena dinámicamente con catalog.js -->
+    </section>
+
+    <section id="genre-results" style="display: none;">
+        <h2 id="genre-results-title"></h2>
+        <section class="book-grid" id="genre-books-list"></section>
+    </section>
+</main>
 
     <footer class="footer">
         <div class="footer__content">
@@ -56,5 +50,6 @@
     </footer>
 
     <script src="js/navbar.js"></script>
+    <script src="js/catalog.js"></script>
 </body>
 </html>

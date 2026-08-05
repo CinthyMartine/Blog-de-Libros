@@ -26,17 +26,17 @@
     </header>
 
     <main>
-        <h1>Explora por editorial</h1>
+    <h1>Explora por editorial</h1>
 
-        <section class="publishers-grid">
-            <a href="#"><img src="Imagenes/Logo-EditorialEdisionesB.png" alt="Editorial Ediciones B"></a>
-            <a href="#"><img src="Imagenes/Logo-EditorialAlfaguara.png" alt="Editorial Alfaguara"></a>
-            <a href="#"><img src="Imagenes/Logo-EditorialDeBolsillo.png" alt="Editorial De Bolsillo"></a>
-            <a href="#"><img src="Imagenes/Logo-EditorialPlaneta.svg" alt="Editorial Planeta"></a>
-            <a href="#"><img src="Imagenes/Logo-EditorialEdisur.jpg" alt="Editorial Edisur"></a>
-            <a href="#"><img src="Imagenes/Logo-EditorialPenguinRandom.png" alt="Editorial Penguin Random House"></a>
-        </section>
-    </main>
+    <section class="book-grid" id="publisher-list">
+        <!-- Se llena dinámicamente con catalog.js -->
+    </section>
+
+    <section id="publisher-results" style="display: none;">
+        <h2 id="publisher-results-title"></h2>
+        <section class="book-grid" id="publisher-books-list"></section>
+    </section>
+</main>
 
     <footer class="footer">
         <div class="footer__content">
@@ -50,5 +50,6 @@
     </footer>
 
     <script src="js/navbar.js"></script>
+    <script src="js/catalog.js"></script>
 </body>
 </html>
