@@ -14,10 +14,10 @@ router.get('/:bookId', async (req, res) => {
                 comentarios.texto,
                 comentarios.fecha,
                 usuarios.nombre AS usuario
-             FROM comentarios
-             JOIN usuarios ON comentarios.usuario_id = usuarios.id
-             WHERE comentarios.libro_id = $1
-             ORDER BY comentarios.fecha DESC`,
+                FROM comentarios
+                JOIN usuarios ON comentarios.usuario_id = usuarios.id
+                WHERE comentarios.libro_id = $1
+                ORDER BY comentarios.fecha DESC`,
             [bookId]
         );
 
@@ -45,8 +45,8 @@ router.post('/', async (req, res) => {
     try {
         const resultado = await pool.query(
             `INSERT INTO comentarios (texto, libro_id, usuario_id)
-             VALUES ($1, $2, $3)
-             RETURNING *`,
+                VALUES ($1, $2, $3)
+                RETURNING *`,
             [texto, libro_id, usuario_id]
         );
 

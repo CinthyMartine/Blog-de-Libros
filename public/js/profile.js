@@ -4,7 +4,6 @@ async function loadProfile() {
         const data = await response.json();
 
         if (!data.autenticado) {
-            // Si no hay sesión, no puede ver su perfil
             window.location.href = 'login.html';
             return;
         }

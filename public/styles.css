@@ -1,4 +1,4 @@
-/* ============ RESET BÁSICO ============ */
+/*  RESET BÁSICO */
 * {
     box-sizing: border-box;
 }
@@ -15,13 +15,17 @@ h1, h2 {
     color: #102b5a;
 }
 
-/* ============ HEADER ============ */
+/*  HEADER  */
 .header {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
 }
 
 .header__logo-container {
@@ -78,41 +82,46 @@ h1, h2 {
     color: #102b5a;
     text-decoration: none;
     font-size: 15px;
+    text-align: center;
+    border-radius: 30px;
 }
 
 .header__nav-item a:hover {
-    background: #ceddf2;
+    background: #f08e6d;
+    color: #fff;
 }
 .header__nav-item--auth a {
-    background-color: #102b5a;
+    background-color: #E87461;
     color: #fff;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 30px;
     margin: 8px 20px;
     text-align: center;
 }
 
 .header__nav-item--auth a:hover {
-    background-color: #1c3f7c;
+    background-color: #f08e6d;
 }
 
-.navbar-profile {
+.header__nav-item--auth a.navbar-profile {
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-content: center;
 }
 
 .navbar-profile__avatar {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background-color: #3b82f6;
+    background-color: #999797;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: 14px;
+    flex-shrink: 0;
 }
 /* Media Query NAV */
 @media (min-width: 700px) {
@@ -137,7 +146,7 @@ h1, h2 {
 
     .header__nav-item a {
         padding: 10px 16px;
-        border-radius: 6px;
+        border-radius: 30px;
         transition: background 0.2s;
     }
 
@@ -149,15 +158,15 @@ h1, h2 {
         margin: 0;
     }
 
-/* ============ BANNER ============ */
+/* BANNER */
 .banner {
     width: 100%;
-    max-height: 320px;
+    max-height: 550px;
     object-fit: cover;
     display: block;
 }
 
-/* ============ BARRA DE BÚSQUEDA ============ */
+/*  BARRA DE BÚSQUEDA  */
 .search-section {
     display: flex;
     justify-content: center;
@@ -175,7 +184,7 @@ h1, h2 {
     flex: 1;
     padding: 12px 16px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 30px;
     font-size: 1rem;
 }
 
@@ -187,8 +196,8 @@ h1, h2 {
 .search-form__button {
     padding: 12px 24px;
     border: none;
-    border-radius: 8px;
-    background-color: #102b5a;
+    border-radius: 30px;
+    background-color: #E87461;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -196,10 +205,10 @@ h1, h2 {
 }
 
 .search-form__button:hover {
-    background-color: #1c3f7c;
+    background-color: #f08e6d;
 }
 
-/* ============ TARJETAS DE LIBROS / AUTORES ============ */
+/*  TARJETAS DE LIBROS / AUTORES  */
 .book-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -251,18 +260,18 @@ h1, h2 {
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    color: #102b5a;
-    background-color: #ceddf2;
+    color:  #fff;
+    background-color: #E87461;
     padding: 10px;
     border-radius: 8px;
     transition: background 0.2s;
 }
 
 .book-card__button:hover {
-    background-color: #b8cdec;
+    background-color: #F4845F;
 }
 
-/* ============ EDITORIALES ============ */
+/* EDITORIALES  */
 .publishers-container {
     margin-top: 30px;
 }
@@ -295,7 +304,7 @@ h1, h2 {
     margin-top: 20px;
 }
 
-/* ============ FOOTER ============ */
+/*  FOOTER  */
 .footer {
     background-color: #f4f4f4;
     color: #555;
@@ -337,7 +346,7 @@ h1, h2 {
 }
 
 
-/* ============ COMENTARIOS ============ */
+/*  COMENTARIOS */
 .comments-section {
     max-width: 700px;
     margin: 50px auto;
@@ -414,7 +423,7 @@ h1, h2 {
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: #3b82f6;
+    background-color: #E87461;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -422,7 +431,7 @@ h1, h2 {
 }
 
 .comment-form button:hover {
-    background-color: #2563eb;
+    background-color: #f08e6d;
 }
 
 .info-message {
@@ -431,7 +440,7 @@ h1, h2 {
     font-size: 14px;
 }
 
-/* ============ LOGIN / REGISTRO (auth-*) ============ */
+/*  LOGIN / REGISTRO (auth-*)  */
 .auth-section {
     max-width: 420px;
     margin: 50px auto;
@@ -476,11 +485,16 @@ h1, h2 {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
+.logout-button-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .auth-form__submit {
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: #102b5a;
+    background-color: #E87461;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -488,7 +502,7 @@ h1, h2 {
 }
 
 .auth-form__submit:hover {
-    background-color: #1c3f7c;
+    background-color: #f08e6d;
 }
 
 .auth-section__redirect {
@@ -506,7 +520,7 @@ h1, h2 {
     text-decoration: underline;
 }
 
-/* ============ PERFIL (profile-*, recommend-*) ============ */
+/*  PERFIL (profile-*, recommend-*) */
 .profile-section,
 .recommend-section,
 .my-recommendations-section {
@@ -561,7 +575,7 @@ h1, h2 {
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
-    background-color: #3b82f6;
+    background-color: #E87461;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -569,7 +583,7 @@ h1, h2 {
 }
 
 .recommend-form__submit:hover {
-    background-color: #2563eb;
+    background-color: #f08e6d;
 }
 
 .recommendations-list {
@@ -695,17 +709,3 @@ h1, h2 {
     border-top: 1px solid #ddd;
 }
 
-.delete-comment-btn {
-    margin-top: 10px;
-    padding: 6px 16px;
-    border: none;
-    border-radius: 6px;
-    background-color: #dc2626;
-    color: white;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.delete-comment-btn:hover {
-    background-color: #b91c1c;
-}

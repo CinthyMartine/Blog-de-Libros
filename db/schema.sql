@@ -55,8 +55,8 @@ CREATE TABLE libros_generos (
 CREATE TABLE comentarios (
     id SERIAL PRIMARY KEY,
     texto TEXT NOT NULL,
-    usuario_id INTEGER REFERENCES usuarios(id),
-    libro_id INTEGER REFERENCES libros(id),
+    usuario_id INTEGER NOT NULL REFERENCES usuarios(id),
+    libro_id INTEGER NOT NULL REFERENCES libros(id),
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

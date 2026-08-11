@@ -17,8 +17,8 @@ router.post('/', async (req, res) => {
     try {
         const resultado = await pool.query(
             `INSERT INTO recomendaciones (usuario_id, titulo_libro, autor_libro, motivo)
-             VALUES ($1, $2, $3, $4)
-             RETURNING *`,
+                VALUES ($1, $2, $3, $4)
+                RETURNING *`,
             [req.session.usuario.id, titulo_libro, autor_libro, motivo]
         );
 

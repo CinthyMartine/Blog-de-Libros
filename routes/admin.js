@@ -38,7 +38,7 @@ router.post('/recommendations/:id/approve', requireAdmin, async (req, res) => {
     }
 
     try {
-        // 1. Buscar quién recomendó este libro
+        // Buscar quién recomendó este libro
         const recomendacion = await pool.query(
             'SELECT usuario_id FROM recomendaciones WHERE id = $1',
             [id]
@@ -50,7 +50,7 @@ router.post('/recommendations/:id/approve', requireAdmin, async (req, res) => {
 
         const usuarioId = recomendacion.rows[0].usuario_id;
 
-        // 2. Crear el libro real, con recomendado_por
+        // Crear el libro real, con recomendado_por
         const libroNuevo = await pool.query(
             `INSERT INTO libros (titulo, portada_url, autor_id, editorial_id, pagina, recomendado_por)
              VALUES ($1, $2, $3, $4, $5, $6)
@@ -60,7 +60,7 @@ router.post('/recommendations/:id/approve', requireAdmin, async (req, res) => {
 
         const libroId = libroNuevo.rows[0].id;
 
-        // 3. Conectar los géneros seleccionados
+        // Conectar los géneros seleccionados
         if (generos && generos.length > 0) {
             for (const generoId of generos) {
                 await pool.query(
@@ -70,7 +70,7 @@ router.post('/recommendations/:id/approve', requireAdmin, async (req, res) => {
             }
         }
 
-        // 4. Marcar la recomendación como aprobada
+        // Marcar la recomendación como aprobada
         await pool.query(
             "UPDATE recomendaciones SET estado = 'aprobado' WHERE id = $1",
             [id]

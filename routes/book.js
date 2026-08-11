@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
                 libros.titulo,
                 libros.portada_url,
                 libros.pagina
-             FROM libros
-             WHERE libros.destacado = TRUE
-             ORDER BY libros.id ASC`
+                FROM libros
+                WHERE libros.destacado = TRUE
+                ORDER BY libros.id ASC`
         );
 
         res.json(resultado.rows);
@@ -37,10 +37,10 @@ router.get('/:id', async (req, res) => {
                 libros.pagina,
                 autores.nombre AS autor,
                 editoriales.nombre AS editorial
-             FROM libros
-             JOIN autores ON libros.autor_id = autores.id
-             JOIN editoriales ON libros.editorial_id = editoriales.id
-             WHERE libros.id = $1`,
+                FROM libros
+                JOIN autores ON libros.autor_id = autores.id
+                JOIN editoriales ON libros.editorial_id = editoriales.id
+                WHERE libros.id = $1`,
             [id]
         );
 

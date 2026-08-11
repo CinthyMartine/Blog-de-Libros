@@ -26,6 +26,10 @@ app.get('/api/test-db', async (req, res) => {
         res.status(500).json({ conectado: false, error: error.message });
     }
 });
+
+const catalogRoutes = require('./routes/catalog');
+app.use('/api', catalogRoutes);
+
 const bookRoutes = require('./routes/book');
 app.use('/api/books', bookRoutes);
 
@@ -41,8 +45,6 @@ app.use('/api/admin', adminRoutes);
 const recommendationsRoutes = require('./routes/recommendations');
 app.use('/api/recommendations', recommendationsRoutes);
 
-const catalogRoutes = require('./routes/catalog');
-app.use('/api', catalogRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

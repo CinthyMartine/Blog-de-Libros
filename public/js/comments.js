@@ -36,7 +36,7 @@ commentForm.addEventListener('submit', async (event) => {
     const texto = document.getElementById('message').value;
 
     try {
-        // 1. Verificar que haya sesión iniciada
+        // Verificar que haya sesión iniciada
         const sessionResponse = await fetch('/api/auth/session');
         const sessionData = await sessionResponse.json();
 
@@ -46,7 +46,7 @@ commentForm.addEventListener('submit', async (event) => {
             return;
         }
 
-        // 2. Enviar el comentario con el usuario real
+        // Enviar el comentario con el usuario real
         const response = await fetch('/api/comments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

@@ -7,7 +7,7 @@ function requireAdmin(req, res, next) {
         return res.status(403).json({ error: 'No tienes permisos de administrador' });
     }
 
-    next(); // todo bien, continúa hacia la ruta real
+    next(); 
 }
 
 module.exports = requireAdmin;

@@ -1,6 +1,4 @@
-/* ============================================ */
-/* PAGES.CSS — Estilos para páginas individuales de libros (/pages) */
-/* ============================================ */
+/* Estilos para páginas individuales de libros (/pages) */
 
 .section_container {
     max-width: 750px;
@@ -10,7 +8,7 @@
 
 .section_container-left,
 .section_container-right {
-    display: none; /* reservadas por si luego quieres agregar contenido a los costados */
+    display: none; 
 }
 
 .section_container-center {
@@ -30,7 +28,7 @@
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* Texto general de la sinopsis — centrado */
+/* Texto general de la sinopsis */
 .box_text {
     font-size: 16px;
     line-height: 1.7;
@@ -40,7 +38,7 @@
     margin: 0 auto 18px;
 }
 
-/* Frases destacadas — mismo estilo que el título (h1), pero más pequeño */
+/* Frases destacadas */
 .box_text-sub {
     color: #102b5a;
     font-weight: 700;

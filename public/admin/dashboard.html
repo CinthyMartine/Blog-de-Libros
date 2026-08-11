@@ -8,12 +8,20 @@
 </head>
 <body>
     <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
         <div class="header__logo-container">
-            <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+            <a href="index.html">
+                <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+            </a>
         </div>
         <nav class="header__nav">
             <ul class="header__nav-list">
-                <li class="header__nav-item"><a href="../index.html">Volver al sitio</a></li>
+                <li class="header__nav-item"><a href="../index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="../genero.html">Genero</a></li>
+                <li class="header__nav-item"><a href="../editorial.html">Editorial</a></li>
+                <li class="header__nav-item"><a href="../authors.html">Autores</a></li>
+                <li class="header__nav-item"><a href="../nosotros.html">Nosotros</a></li>
             </ul>
         </nav>
     </header>
@@ -24,7 +32,20 @@
         <p id="admin-welcome"></p>
     </section>
 
-    <!-- ============ SUBIR LIBRO NUEVO (sin recomendación) ============ -->
+    <section class="profile-section">
+            <h1 class="profile-section__title">Mi perfil</h1>
+
+            <div class="profile-info">
+                <p><strong>Nombre:</strong> <span id="profile-name">Nombre de usuario</span></p>
+                <p><strong>Correo:</strong> <span id="profile-email">correo@ejemplo.com</span></p>
+            </div>
+        </section>
+
+    <div class="logout-button-wrapper">
+            <button id="logout-button" class="auth-form__submit">Cerrar sesión</button>
+        </div>
+
+    <!-- SUBIR LIBRO NUEVO (sin recomendación) -->
     <section class="admin-section">
         <h2>Agregar libro nuevo</h2>
         <form id="new-book-form">
@@ -33,21 +54,20 @@
                 <input type="text" id="new-book-titulo" required>
             </div>
 
-           <div class="form-group">
-    <label for="new-book-autor">Autor:</label>
-    <select id="new-book-autor">
-        <option value="">-- Selecciona un autor --</option>
-    </select>
-    <input type="text" id="new-book-autor-nuevo" placeholder="O escribe un autor nuevo aquí">
-</div>
-
-<div class="form-group">
-    <label for="new-book-editorial">Editorial:</label>
-    <select id="new-book-editorial">
-        <option value="">-- Selecciona una editorial --</option>
-    </select>
-    <input type="text" id="new-book-editorial-nuevo" placeholder="O escribe una editorial nueva aquí">
-</div>
+            <div class="form-group">
+                <label for="new-book-autor">Autor:</label>
+                <select id="new-book-autor">
+                    <option value="">-- Selecciona un autor --</option>
+                </select>
+                <input type="text" id="new-book-autor-nuevo" placeholder="O escribe un autor nuevo aquí">
+            </div>
+            <div class="form-group">
+                <label for="new-book-editorial">Editorial:</label>
+                <select id="new-book-editorial">
+                    <option value="">-- Selecciona una editorial --</option>
+                </select>
+                <input type="text" id="new-book-editorial-nuevo" placeholder="O escribe una editorial nueva aquí">
+            </div>
 
             <div class="form-group">
                 <label for="new-book-generos">Géneros (puedes elegir varios):</label>
@@ -75,7 +95,7 @@
         </form>
     </section>
 
-    <!-- ============ RECOMENDACIONES PENDIENTES ============ -->
+    <!-- RECOMENDACIONES PENDIENTES -->
     <section class="admin-section">
         <h2>Recomendaciones pendientes</h2>
         <div id="recommendations-list" class="recommendations-admin-list"></div>
@@ -120,7 +140,7 @@
         </section>
     </section>
 
-    <!-- ============ AUDITORÍA DE COMENTARIOS (la conectamos en el próximo paso) ============ -->
+    <!-- AUDITORÍA DE COMENTARIOS (la conectamos en el próximo paso) -->
     <section class="admin-section">
     <h2>Comentarios recientes</h2>
     <div id="comments-audit-list" class="recommendations-admin-list"></div>

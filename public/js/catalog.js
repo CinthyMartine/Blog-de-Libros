@@ -1,4 +1,4 @@
-// ---- Mostrar la lista de géneros (categorías) ----
+//  Mostrar la lista de géneros (categorías)
 async function loadGenreList() {
     const container = document.getElementById('genre-list');
     if (!container) return;
@@ -28,7 +28,7 @@ async function loadGenreList() {
     }
 }
 
-// ---- Mostrar los libros de un género específico ----
+// Mostrar los libros de un género específico
 async function showGenreBooks(genreId, genreName) {
     try {
         const response = await fetch(`/api/books/by-genre/${genreId}`);
@@ -63,7 +63,7 @@ async function showGenreBooks(genreId, genreName) {
     }
 }
 
-// ---- EDITORIALES ----
+// Editoriales
 async function loadPublisherList() {
     const container = document.getElementById('publisher-list');
     if (!container) return;
@@ -127,7 +127,7 @@ async function showPublisherBooks(publisherId, publisherName) {
     }
 }
 
-// ---- AUTORES ----
+// Autores
 async function loadAuthorList() {
     const container = document.getElementById('author-list');
     if (!container) return;

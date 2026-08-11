@@ -8,7 +8,6 @@ const palabrasProhibidas = [
     'pendejo',
     'puta',
     'puto'
-    // Agrega aquí las que consideres necesarias
 ];
 
 function contieneLenguajeInapropiado(texto) {

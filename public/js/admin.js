@@ -1,6 +1,26 @@
 let opciones = { autores: [], editoriales: [], generos: [] };
 let recomendacionSeleccionadaId = null;
 
+async function loadProfile() {
+    try {
+        const response = await fetch('/api/auth/session');
+        const data = await response.json();
+
+        if (!data.autenticado) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        document.getElementById('profile-name').textContent = data.usuario.nombre;
+        document.getElementById('profile-email').textContent = data.usuario.email;
+
+    } catch (error) {
+        console.error('Error al cargar el perfil:', error);
+    }
+}
+
+loadProfile();
+
 async function loadOptions() {
     const response = await fetch('/api/admin/options');
     opciones = await response.json();
@@ -251,6 +271,19 @@ async function loadCommentsAudit() {
     } catch (error) {
         console.error('Error al cargar comentarios:', error);
     }
+}
+
+const logoutButton = document.getElementById('logout-button');
+
+if (logoutButton) {
+    logoutButton.addEventListener('click', async () => {
+        try {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = '../login.html';
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+        }
+    });
 }
 
 loadOptions();

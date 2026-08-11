@@ -41,10 +41,10 @@ router.get('/books/by-genre/:id', async (req, res) => {
     try {
         const resultado = await pool.query(
             `SELECT libros.id, libros.titulo, libros.portada_url, libros.pagina
-             FROM libros
-             JOIN libros_generos ON libros.id = libros_generos.libro_id
-             WHERE libros_generos.genero_id = $1
-             ORDER BY libros.titulo`,
+                FROM libros
+                JOIN libros_generos ON libros.id = libros_generos.libro_id
+                WHERE libros_generos.genero_id = $1
+                ORDER BY libros.titulo`,
             [id]
         );
         res.json(resultado.rows);
@@ -78,15 +78,41 @@ router.get('/books/by-author/:id', async (req, res) => {
     try {
         const resultado = await pool.query(
             `SELECT id, titulo, portada_url, pagina
-             FROM libros
-             WHERE autor_id = $1
-             ORDER BY titulo`,
+                FROM libros
+                WHERE autor_id = $1
+                ORDER BY titulo`,
             [id]
         );
         res.json(resultado.rows);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error al obtener los libros' });
+    }
+});
+
+// GET /api/books/search?q=texto — busca libros por título o autor
+router.get('/books/search', async (req, res) => {
+    const { q } = req.query;
+
+    if (!q) {
+        return res.json([]);
+    }
+
+    try {
+        const resultado = await pool.query(
+            `SELECT libros.id, libros.titulo, libros.portada_url, libros.pagina
+             FROM libros
+             JOIN autores ON libros.autor_id = autores.id
+             WHERE libros.titulo ILIKE $1 OR autores.nombre ILIKE $1
+             ORDER BY libros.titulo`,
+            [`%${q}%`]
+        );
+
+        res.json(resultado.rows);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al buscar libros' });
     }
 });
 
