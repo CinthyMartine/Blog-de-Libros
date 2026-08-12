@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../pages.css">
+    <title>Rayuela</title>
+</head>
+<body>
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
+        <div class="header__logo-container">
+            <a href="../index.html">
+                <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+            </a>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="../index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="../genero.html">Genero</a></li>
+                <li class="header__nav-item"><a href="../editorial.html">Editorial</a></li>
+                <li class="header__nav-item"><a href="../autores.html">Autores</a></li>
+                <li class="header__nav-item"><a href="../nosotros.html">Nosotros</a></li>
+                <li class="header__nav-item header__nav-item--auth"><a href="../login.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Rayuela</h1>
+
+        <section class="section_container">
+            <section class="section_container-left"></section>
+            <section class="section_container-center">
+                <img class="img_libro-ep" src="../Imagenes/Libro-Rayuela.png" alt="imagen del libro Rayuela">
+
+                <p class="box_text-sub">
+                    La obra de Julio Cortázar que cambió para siempre la forma de leer
+                </p>
+
+                <p class="box_text">
+                    Publicada en 1963, esta novela revolucionaria del autor argentino rompió los esquemas de la literatura hispanoamericana al ofrecer una historia que se puede leer de múltiples maneras. Un viaje entre París y Buenos Aires lleno de jazz, amor, filosofía y búsqueda personal.
+                </p>
+
+                <p class="box_text-sub">
+                    "Andábamos sin buscarnos pero sabiendo que andábamos para encontrarnos."
+                </p>
+
+                <p class="box_text">
+                    Rayuela narra la historia de Horacio Oliveira, un intelectual argentino en París que divide sus días entre el jazz, la filosofía y su compleja relación con La Maga, una mujer intuitiva que desafía su exceso de lógica. Tras una serie de eventos trágicos, Horacio regresa a Buenos Aires en una búsqueda personal marcada por la nostalgia y el caos. Más allá de su trama sobre el amor y la existencia, la gran revolución de esta obra de Julio Cortázar radica en su formato: propone un "juego" interactivo donde el lector puede seguir la historia de forma tradicional (del capítulo 1 al 56), mediante un tablero de dirección que salta entre capítulos e integrando textos complementarios, o creando su propio orden de lectura.
+                </p>
+            </section>
+            <section class="section_container-right"></section>
+        </section>
+
+        <section class="comments-section" id="comments-section" data-book-id="AQUI_VA_EL_ID_REAL">
+            <div class="comments-list" id="comments-list">
+                <p id="no-comments" class="no-comments" style="display:none;">Todavía no hay comentarios. ¡Sé el primero!</p>
+            </div>
+
+            <h2 class="comments-section__title">Comentarios</h2>
+
+            <form class="comment-form" id="comment-form">
+                <label for="message">Mensaje:</label>
+                <textarea placeholder="Escribe tu comentario..." id="message" name="message" rows="4" cols="30" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p class="info-message">Inicia sesión para comentar. Los comentarios con lenguaje inapropiado no serán publicados.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 Club de libros. Todos los derechos reservados.</p>
+            <ul class="footer__links">
+                <li><a href="../nosotros.html">Sobre el blog</a></li>
+                <li><a href="../politica-privacidad.html">Política de privacidad</a></li>
+                <li><a href="../contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../js/comments.js"></script>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
