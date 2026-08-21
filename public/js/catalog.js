@@ -191,6 +191,34 @@ async function showAuthorBooks(authorId, authorName) {
     }
 }
 
+// Si la URL trae un id (ej. editorial.html?id=1), mostrar esos libros automáticamente
+const params = new URLSearchParams(window.location.search);
+const idDesdeUrl = params.get('id');
+
+if (idDesdeUrl) {
+    if (document.getElementById('publisher-list')) {
+        fetch('/api/publishers')
+            .then(res => res.json())
+            .then(publishers => {
+                const publisher = publishers.find(p => p.id == idDesdeUrl);
+                if (publisher) {
+                    showPublisherBooks(publisher.id, publisher.nombre);
+                }
+            });
+    }
+
+    if (document.getElementById('author-list')) {
+        fetch('/api/authors')
+            .then(res => res.json())
+            .then(authors => {
+                const author = authors.find(a => a.id == idDesdeUrl);
+                if (author) {
+                    showAuthorBooks(author.id, author.nombre);
+                }
+            });
+    }
+}
+
 loadGenreList();
 loadPublisherList();
 loadAuthorList();

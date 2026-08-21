@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../pages.css">
+    <title>La casa de los espíritus</title>
+</head>
+<body>
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open-menu">
+        <label for="open-menu" class="header__nav-toggle">=</label>
+        <div class="header__logo-container">
+            <a href="../index.html">
+                <img class="header__logo" src="../Imagenes/Logo-Clubdelibros.png" alt="Logo del club de libros">
+            </a>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="../index.html">Inicio</a></li>
+                <li class="header__nav-item"><a href="../genero.html">Genero</a></li>
+                <li class="header__nav-item"><a href="../editorial.html">Editorial</a></li>
+                <li class="header__nav-item"><a href="../autores.html">Autores</a></li>
+                <li class="header__nav-item"><a href="../nosotros.html">Nosotros</a></li>
+                <li class="header__nav-item header__nav-item--auth"><a href="../login.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>La casa de los espíritus</h1>
+
+        <section class="section_container">
+            <section class="section_container-left"></section>
+            <section class="section_container-center">
+                <img class="img_libro-ep" src="../Imagenes/Libro-La-casadelosespiritus.png" alt="imagen del libro La casa de los espíritus">
+
+                <p class="box_text">
+                    Es imposible hablar de la literatura latinoamericana sin toparse con este nombre. Hayas leído mucho o poco sobre realismo mágico, seguro has escuchado hablar de la familia Trueba. Publicada en 1982, La casa de los espíritus no solo consagró a Isabel Allende a nivel mundial, sino que se convirtió de inmediato en un clásico indiscutible y en una de las obras más leídas y queridas de nuestras letras.
+                </p>
+
+                <p class="box_text">
+                    A través de cuatro generaciones marcadas por pasiones intensas, secretos y clarividencia, la novela recorre la transformación de una familia que es, en el fondo, el reflejo de todo un país. Allende mezcla con maestría la cotidianidad con lo sobrenatural, presentándonos a personajes inolvidables como la clarividente Clara o el temperamental Esteban Trueba, dentro de un hogar donde los espíritus y la historia viva conviven bajo el mismo techo.
+                </p>
+
+                <p class="box_text-sub">
+                    “La memoria es frágil y el transcurso de una vida es muy breve y sucede todo tan de prisa, que no alcanzamos a ver la relación entre los acontecimientos…”
+                </p>
+
+                <p class="box_text">
+                    Esta no es solo una saga familiar con toques fantásticos; es una reflexión profunda sobre la memoria, la reconciliación y el peso de las decisiones que heredamos. Muestra cómo el amor, el rencor y la búsqueda de justicia se entrelazan a través del tiempo, recordándonos que el destino colectivo suele construirse desde las emociones más íntimas del hogar.
+                </p>
+
+                <p class="box_text-sub">
+                    “No hay que temer a los muertos, sino a los vivos.”
+                </p>
+
+                <p class="box_text">
+                    Una narración envolvente, cargada de fuerza femenina, contrastes sociales y una sensibilidad única que atrapa desde la primera página. Una historia viva, emotiva y lúcida que demuestra cómo el pasado y el presente dialogan siempre entre sí. Un clásico imprescindible que deja huella en quien lo lee.
+                </p>
+            </section>
+            <section class="section_container-right"></section>
+        </section>
+
+        <section class="comments-section" id="comments-section" data-book-id="AQUI_VA_EL_ID_REAL">
+            <div class="comments-list" id="comments-list">
+                <p id="no-comments" class="no-comments" style="display:none;">Todavía no hay comentarios. ¡Sé el primero!</p>
+            </div>
+
+            <h2 class="comments-section__title">Comentarios</h2>
+
+            <form class="comment-form" id="comment-form">
+                <label for="message">Mensaje:</label>
+                <textarea placeholder="Escribe tu comentario..." id="message" name="message" rows="4" cols="30" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p class="info-message">Inicia sesión para comentar. Los comentarios con lenguaje inapropiado no serán publicados.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">© 2025 Club de libros. Todos los derechos reservados.</p>
+            <ul class="footer__links">
+                <li><a href="../nosotros.html">Sobre el blog</a></li>
+                <li><a href="../politica-privacidad.html">Política de privacidad</a></li>
+                <li><a href="../contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="../js/comments.js"></script>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
